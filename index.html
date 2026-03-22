@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Навигатор | 4 кнопки</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .grid-container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(2px);
+            border-radius: 2.5rem;
+            padding: 2rem;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #f0f9ff, #c084fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .sub {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .nav-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            text-align: center;
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border-radius: 1.5rem;
+            padding: 1.5rem 1rem;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #f1f5f9;
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 14px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(145deg, #2d3a52, #111827);
+            box-shadow: 0 18px 28px -8px rgba(0, 0, 0, 0.5);
+            border-color: rgba(192, 132, 252, 0.4);
+        }
+
+        .nav-btn:active {
+            transform: translateY(2px);
+        }
+
+        /* Единый размер для всех иконок */
+        .btn-icon {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Для SVG особая обработка */
+        .btn-icon.svg-icon {
+            width: 60px;
+            height: 60px;
+        }
+
+        .btn-text {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 600px) {
+            .button-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .btn-icon {
+                width: 50px;
+                height: 50px;
+            }
+            .nav-btn {
+                padding: 1.2rem;
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 1rem;
+            }
+            .btn-text {
+                font-size: 1.1rem;
+            }
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: #475569;
+            background: rgba(0,0,0,0.3);
+            padding: 0.6rem;
+            border-radius: 2rem;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-container">
+    <h1>🎯 Навигатор</h1>
+    <div style="text-align: center;">
+        <div class="sub">нажми на кнопку — перейдёшь на сайт</div>
+    </div>
+
+    <div class="button-grid">
+        <!-- 1. DDBET -->
+        <a href="https://refpa96317.com/L?tag=d_3620192m_11213c_&site=3620192&ad=11213" class="nav-btn" target="_blank" rel="noopener noreferrer">
+            <img class="btn-icon" src="data:image/png;base64,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" alt="DDBET">
+            <span class="btn-text">DDBET</span>
+        </a>
+
+        <!-- 2. BETJAM -->
+        <a href="https://klnumymb.com/k1mU" class="nav-btn" target="_blank" rel="noopener noreferrer">
+            <img class="btn-icon svg-icon" src="https://betjam.com/genfiles/cms/325-958/desktop/media_asset/5297d239032fec6e237268f38abbbede.svg" alt="BETJAM">
+            <span class="btn-text">BETJAM</span>
+        </a>
+
+        <!-- 3. ULTRAPARI -->
+        <a href="https://refpa5124.com/L?tag=d_4147077m_97140c_&site=4147077&ad=97140" class="nav-btn" target="_blank" rel="noopener noreferrer">
+            <img class="btn-icon" src="https://static.johnnybet.com/system/articles/thumbnails/54130/normal/1772099139-ultrapari.jpg" alt="ULTRAPARI">
+            <span class="btn-text">ULTRAPARI</span>
+        </a>
+
+        <!-- 4. MOSTBET -->
+        <a href="https://refpa42156.com/L?tag=d_4617859m_118408c_&site=4617859&ad=118408" class="nav-btn" target="_blank" rel="noopener noreferrer">
+            <img class="btn-icon" src="https://mostbet-app1.in/wp-content/uploads/2023/03/mostbet-app1-in-register-on-mostbet-app-step-1.jpg" alt="MOSTBET">
+            <span class="btn-text">MOSTBET</span>
+        </a>
+    </div>
+
+    <div class="footer-note">
+        🔗 Все ссылки активны • нажми на кнопку для перехода
+    </div>
+</div>
+
+</body>
+</html>
